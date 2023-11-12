@@ -1,6 +1,6 @@
 package com.trasteandospring.controllers;
 
-import com.trasteandospring.Adapters.MiObjeto;
+import com.trasteandospring.adapters.MiObjeto;
 import com.trasteandospring.services.MiObjetoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

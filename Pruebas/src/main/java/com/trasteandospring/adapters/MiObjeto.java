@@ -1,4 +1,4 @@
-package com.trasteandospring.Adapters;
+package com.trasteandospring.adapters;
 
 import org.springframework.stereotype.Component;
 

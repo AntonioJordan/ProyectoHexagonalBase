@@ -1,6 +1,6 @@
 package com.trasteandospring.services;
 
-import com.trasteandospring.Adapters.MiObjeto;
+import com.trasteandospring.adapters.MiObjeto;
 import org.springframework.stereotype.Service;
 
 @Service
