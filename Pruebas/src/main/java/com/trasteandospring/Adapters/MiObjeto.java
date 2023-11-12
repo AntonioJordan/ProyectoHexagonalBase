@@ -1,8 +1,8 @@
-package com.trasteandospring;
+package com.trasteandospring.Adapters;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
-@Controller
+@Component
 public class MiObjeto {
     private String textoDelJson;
 
