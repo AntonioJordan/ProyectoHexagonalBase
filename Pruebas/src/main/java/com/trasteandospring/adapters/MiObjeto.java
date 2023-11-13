@@ -9,6 +9,7 @@ public class MiObjeto {
     public MiObjeto(String textoDelJson) {
         this.textoDelJson = textoDelJson;
     }
+
     public MiObjeto() {
     }
 
