@@ -3,6 +3,6 @@ package com.example.demo.math;
 public class MathLibrary {
 
     public int add(int a, int b) {
-        return 0;
+        return a + b;
     }
 }
