@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.infrastructure.config;
 
 import com.hexagonal.architecture.application.services.TaskService;
-import com.hexagonal.architecture.application.usercases.*;
+import com.hexagonal.architecture.application.usecases.*;
 import com.hexagonal.architecture.domain.ports.in.GetAdditionalTaskInfoUseCase;
 import com.hexagonal.architecture.domain.ports.out.ExternalServicePort;
 import com.hexagonal.architecture.domain.ports.out.TaskRepositoryPort;

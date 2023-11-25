@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.application.usercases;
+package com.hexagonal.architecture.application.usecases;
 
 import com.hexagonal.architecture.domain.models.AdditionalTaskInfo;
 import com.hexagonal.architecture.domain.ports.in.GetAdditionalTaskInfoUseCase;
