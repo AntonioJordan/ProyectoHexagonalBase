@@ -1,5 +1,6 @@
 package com.hexagonal.architecture.infrastructure.config;
 
+import com.hexagonal.architecture.application.services.AdditionalTaskInfoService;
 import com.hexagonal.architecture.application.services.TaskService;
 import com.hexagonal.architecture.application.usecases.*;
 import com.hexagonal.architecture.domain.ports.in.GetAdditionalTaskInfoUseCase;
@@ -30,7 +31,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public GetAdditionalTaskInfoUseCase getAdditionalTaskInfoUseCase(ExternalServicePort externalServicePort){
+    public GetAdditionalTaskInfoUseCase getAdditionalTaskInfoUseCase(AdditionalTaskInfoService externalServicePort){
         return new GetAdditionalTaskInfoUseCaseImpl(externalServicePort);
     }
 
