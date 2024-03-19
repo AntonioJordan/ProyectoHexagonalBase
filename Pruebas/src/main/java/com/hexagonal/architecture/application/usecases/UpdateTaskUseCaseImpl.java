@@ -1,8 +1,8 @@
 package com.hexagonal.architecture.application.usecases;
 
 import com.hexagonal.architecture.domain.models.Tasks;
-import com.hexagonal.architecture.domain.ports.in.UpdateTaskUseCase;
-import com.hexagonal.architecture.domain.ports.out.TaskRepositoryPort;
+import com.hexagonal.architecture.application.ports.in.UpdateTaskUseCase;
+import com.hexagonal.architecture.application.ports.out.TaskRepositoryPort;
 
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.application.usecases;
 
-import com.hexagonal.architecture.domain.ports.in.DeleteTaskUseCase;
-import com.hexagonal.architecture.domain.ports.out.TaskRepositoryPort;
+import com.hexagonal.architecture.application.ports.in.DeleteTaskUseCase;
+import com.hexagonal.architecture.application.ports.out.TaskRepositoryPort;
 
 public class DeleteTaskUseCaseImpl implements DeleteTaskUseCase {
 

@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.infrastructure.adapters;
 
 import com.hexagonal.architecture.domain.models.AdditionalTaskInfo;
-import com.hexagonal.architecture.domain.ports.out.ExternalServicePort;
+import com.hexagonal.architecture.application.ports.out.ExternalServicePort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 

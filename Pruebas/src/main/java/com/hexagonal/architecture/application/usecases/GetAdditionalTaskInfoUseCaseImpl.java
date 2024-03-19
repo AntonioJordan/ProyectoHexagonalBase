@@ -2,8 +2,7 @@ package com.hexagonal.architecture.application.usecases;
 
 import com.hexagonal.architecture.application.services.AdditionalTaskInfoService;
 import com.hexagonal.architecture.domain.models.AdditionalTaskInfo;
-import com.hexagonal.architecture.domain.ports.in.GetAdditionalTaskInfoUseCase;
-import com.hexagonal.architecture.domain.ports.out.ExternalServicePort;
+import com.hexagonal.architecture.application.ports.in.GetAdditionalTaskInfoUseCase;
 
 public class GetAdditionalTaskInfoUseCaseImpl implements GetAdditionalTaskInfoUseCase {
 

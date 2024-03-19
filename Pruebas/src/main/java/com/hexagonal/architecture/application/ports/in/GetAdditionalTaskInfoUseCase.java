@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.domain.ports.in;
+package com.hexagonal.architecture.application.ports.in;
 
 import com.hexagonal.architecture.domain.models.AdditionalTaskInfo;
 
