@@ -43,3 +43,4 @@ build/
 
 ./Pruebas/HELP.md
 ./Pruebas/Architecture.iml
+./Pruebas/idea/**
