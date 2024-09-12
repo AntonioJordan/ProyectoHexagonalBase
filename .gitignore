@@ -22,7 +22,6 @@ build/
 .idea/**/dictionaries
 .idea/**/vcs.xml
 .idea/**/shelf
-.idea/**
 
 # Configuraciones de entorno (Windows/Linux/macOS)
 .idea/**/modules.xml
@@ -42,5 +41,5 @@ build/
 *.war
 *.ear
 
-Architecture.iml
-HELP.md
+./Pruebas/HELP.md
+./Pruebas/Architecture.iml
