@@ -3,7 +3,6 @@ package com.hexagonal.architecture.application.usecases;
 import com.hexagonal.architecture.application.services.AdditionalTaskInfoService;
 import com.hexagonal.architecture.domain.models.AdditionalTaskInfo;
 import com.hexagonal.architecture.domain.ports.in.GetAdditionalTaskInfoUseCase;
-import com.hexagonal.architecture.domain.ports.out.ExternalServicePort;
 
 /**
  * The type Get additional task info use case.
