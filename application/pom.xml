@@ -58,7 +58,7 @@
 				<version>3.21.0</version>
 				<configuration>
 					<rulesets>
-						<ruleset>config/pmd/pmd.xml</ruleset>
+						<ruleset>../config/pmd/pmd.xml</ruleset>
 					</rulesets>
 					<printFailingErrors>true</printFailingErrors>
 					<includeTests>true</includeTests>
