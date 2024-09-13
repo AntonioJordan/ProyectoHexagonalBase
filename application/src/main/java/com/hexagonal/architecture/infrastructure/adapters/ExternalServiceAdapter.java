@@ -5,81 +5,138 @@ import com.hexagonal.architecture.domain.ports.out.ExternalServicePort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * The type External service adapter.
+ */
 public class ExternalServiceAdapter implements ExternalServicePort {
 
-    private final RestTemplate restTemplate;
+  private final RestTemplate restTemplate;
 
-    public ExternalServiceAdapter() {
-        restTemplate = new RestTemplate();
+  /**
+   * Instantiates a new External service adapter.
+   */
+  public ExternalServiceAdapter() {
+    restTemplate = new RestTemplate();
+  }
+
+  @Override
+  public AdditionalTaskInfo getAdditionalTaskInfo(Long taskId) {
+    String apiUrl = "https://jsonplaceholder.typicode.com/todos/" + taskId;
+    ResponseEntity<JsonPlaceHolederTodo> response = restTemplate.getForEntity(apiUrl, JsonPlaceHolederTodo.class);
+    JsonPlaceHolederTodo todo = response.getBody();
+    if (todo == null) {
+      return null;
+    }
+    apiUrl = "https://jsonplaceholder.typicode.com/users/" + todo.getUserId();
+    ResponseEntity<JsonPlaceHolderUser> userResponse = restTemplate.getForEntity(apiUrl, JsonPlaceHolderUser.class);
+    JsonPlaceHolderUser user = userResponse.getBody();
+
+    if (user == null) {
+      return null;
+    }
+    return new AdditionalTaskInfo(user.getId(), user.getName(), user.getEmail());
+  }
+
+  private static class JsonPlaceHolederTodo {
+    private Long id;
+    private Long userId;
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+      return id;
     }
 
-    @Override
-    public AdditionalTaskInfo getAdditionalTaskInfo(Long taskId) {
-        String apiUrl = "https://jsonplaceholder.typicode.com/todos/" + taskId;
-        ResponseEntity<JsonPlaceHolederTodo> response = restTemplate.getForEntity(apiUrl, JsonPlaceHolederTodo.class);
-        JsonPlaceHolederTodo todo = response.getBody();
-        if(todo == null){
-            return null;
-        }
-        apiUrl = "https://jsonplaceholder.typicode.com/users/" + todo.getUserId();
-        ResponseEntity<JsonPlaceHolderUser> userResponse = restTemplate.getForEntity(apiUrl, JsonPlaceHolderUser.class);
-        JsonPlaceHolderUser user = userResponse.getBody();
-
-        if(user == null){
-            return null;
-        }
-        return new AdditionalTaskInfo(user.getId(), user.getName(), user.getEmail());
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(Long id) {
+      this.id = id;
     }
 
-    private static class JsonPlaceHolederTodo{
-        private Long id;
-        private Long userId;
-
-        public Long getId() {
-            return id;
-        }
-        public void setId(Long id) {
-            this.id = id;
-        }
-        public Long getUserId() {
-            return userId;
-        }
-        public void setUserId(Long userId) {
-            this.userId = userId;
-        }
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
+    public Long getUserId() {
+      return userId;
     }
 
-    private static class JsonPlaceHolderUser{
-        private Long id;
-        private String name;
-        private String email;
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
+    public void setUserId(Long userId) {
+      this.userId = userId;
+    }
+  }
 
-        public Long getId() {
-            return id;
-        }
+  private static class JsonPlaceHolderUser {
+    private Long id;
+    private String name;
+    private String email;
 
-        public void setId(Long id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+      return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(Long id) {
+      this.id = id;
+    }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName() {
+      return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+      this.name = name;
+    }
+
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
+      return email;
+    }
+
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
+      this.email = email;
+    }
+  }
 
 
 }
