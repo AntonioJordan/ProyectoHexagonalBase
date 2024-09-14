@@ -63,13 +63,11 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
                 <executions>
-                    <!-- Prepare the JaCoCo agent -->
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <!-- Generate report after tests -->
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
@@ -77,7 +75,6 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                    <!-- Check for coverage threshold -->
                     <execution>
                         <id>check</id>
                         <goals>
