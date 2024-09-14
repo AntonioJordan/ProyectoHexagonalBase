@@ -1,9 +1,5 @@
 <FindBugsFilter>
     <Match>
-        <Class name="lmes.heleointegrator.invoiceaclob.application.exception.LmesInvoicesServletException"/>
-        <Bug pattern="FORMAT_STRING_MANIPULATION"/>
-    </Match>
-    <Match>
         <Bug pattern="CRLF_INJECTION_LOGS"/>
     </Match>
 </FindBugsFilter>
