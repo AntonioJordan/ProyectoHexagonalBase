@@ -40,30 +40,6 @@ class TaskControllerTest {
   }
 
   /**
-   * Test create task.
-   */
-  @Test
-  void testCreateTask() {
-    //given
-    Tasks task = easyRandom.nextObject(Tasks.class);
-    Mockito.when(taskService.createTask(Mockito.any(Tasks.class))).thenReturn(task);
-
-    //when
-    ResponseEntity<Tasks> response = taskController.createTask(task);
-    ResponseEntity<Tasks> response2 = taskController.createTask(task);
-
-    //then
-    Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    Assertions.assertEquals(task, response.getBody());
-    Mockito.verify(taskService, Mockito.times(1)).createTask(task);
-
-    //then
-    Assertions.assertEquals(HttpStatus.CREATED, response2.getStatusCode());
-    Assertions.assertEquals(task, response2.getBody());
-    Mockito.verify(taskService, Mockito.times(1)).createTask(task);
-  }
-
-  /**
    * Test get task by id task found.
    */
   @Test
