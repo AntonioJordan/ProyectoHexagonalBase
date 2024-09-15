@@ -1,0 +1,46 @@
+# Directorios de configuración de IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Archivos de configuración del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Carpetas de salida
+/out/
+target/
+build/
+
+# Archivos de logs
+*.log
+
+# Archivos específicos de IntelliJ para configuraciones locales
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/vcs.xml
+.idea/**/shelf
+
+# Configuraciones de entorno (Windows/Linux/macOS)
+.idea/**/modules.xml
+.idea/**/assets
+.idea/**/coverage
+
+# Configuraciones de ejecución/debug locales
+.idea/**/runConfigurations/
+
+# Otras configuraciones locales
+.idea/**/gradle.xml
+.idea/**/libraries/
+
+# Archivos generados por Maven o Gradle
+*.class
+*.jar
+*.war
+*.ear
+
+./Pruebas/HELP.md
+./Pruebas/Architecture.iml
+./Pruebas/idea/**
