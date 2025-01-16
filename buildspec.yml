@@ -12,7 +12,7 @@ phases:
       - echo "Compilando y empaquetando la aplicación..."
       - mvn clean package -DskipTests
       - echo "Renombrando archivo JAR generado..."
-      - cp target/*.jar application.jar
+      - mv target/*.jar application.jar
 artifacts:
   files:
     - application.jar
