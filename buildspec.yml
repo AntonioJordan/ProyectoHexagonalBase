@@ -6,25 +6,27 @@ phases:
       maven: 3.8
     commands:
       - echo "Instalando dependencias..."
-      - export LANG=en_US.UTF-8 # Establece configuración regional para evitar problemas de codificación
+      - export LANG=en_US.UTF-8 # Configuración regional
       - echo "Configuración regional: $LANG"
       - mvn dependency:go-offline
   build:
     commands:
       - echo "Estableciendo directorio de trabajo..."
-      - cd /var/app/current || exit 1 # Asegura que el directorio exista y sea accesible
+      - cd /var/app/current || exit 1 # Asegura que el directorio sea accesible
       - echo "Verificando contenido del directorio actual..."
       - ls -l
       - echo "Compilando y empaquetando la aplicación..."
-      - mvn clean package -DskipTests || (echo "Error durante la compilación" && exit 1)
+      - mvn clean package -DskipTests
+      - echo "Verificando contenido de la carpeta 'target'..."
+      - ls -l target # Verifica si el JAR está en el directorio 'target'
       - echo "Renombrando archivo JAR generado..."
-      - mv target/*.jar application.jar
+      - mv target/*.jar application.jar || (echo "No se encuentra el archivo JAR" && exit 1)
   post_build:
     commands:
       - echo "Build finalizado. Validando artefactos..."
-      - ls -l /var/app/current
+      - ls -l /var/app/current # Verifica que 'application.jar' esté presente
 artifacts:
   files:
     - application.jar
     - Procfile
-    - /var/app/current/target/**/*
+    - /var/app/current/target/**/*  # Incluir todos los artefactos generados
