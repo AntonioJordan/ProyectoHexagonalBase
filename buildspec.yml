@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+      maven: 3.8
+    commands:
+      - echo "Instalando dependencias necesarias para el proyecto..."
+      - mvn dependency:go-offline
+  build:
+    commands:
+      - echo "Compilando y empaquetando la aplicación..."
+      - mvn clean package -DskipTests
+      - echo "Copiando el archivo JAR generado..."
+      - cp target/*.jar application.jar
+artifacts:
+  files:
+    - application.jar
+    - Procfile
