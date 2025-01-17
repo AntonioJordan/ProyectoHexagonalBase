@@ -20,7 +20,8 @@ phases:
       - echo "Verificando contenido de la carpeta 'target'..."
       - ls -l target # Verifica si el JAR está en el directorio 'target'
       - echo "Renombrando archivo JAR generado..."
-      - mv target/*.jar application.jar || (echo "No se encuentra el archivo JAR" && exit 1)
+      - mv target/*.jar application.jar
+      - if [ $? -ne 0 ]; then echo "No se encuentra el archivo JAR" && exit 1; fi
   post_build:
     commands:
       - echo "Build finalizado. Validando artefactos..."
