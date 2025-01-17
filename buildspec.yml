@@ -12,7 +12,7 @@ phases:
   build:
     commands:
       - echo "Estableciendo directorio de trabajo..."
-      - cd /var/app/current || exit 1 # Asegura que el directorio sea accesible
+      - cd /var/app/current
       - echo "Verificando contenido del directorio actual..."
       - ls -l
       - echo "Compilando y empaquetando la aplicación..."
@@ -21,7 +21,7 @@ phases:
       - ls -l target # Verifica si el JAR está en el directorio 'target'
       - echo "Renombrando archivo JAR generado..."
       - mv target/*.jar application.jar
-      - if [ $? -ne 0 ]; then echo "No se encuentra el archivo JAR" && exit 1; fi
+      - if [ -f application.jar ]; then echo "JAR encontrado"; else echo "No se encuentra el archivo JAR" && exit 1; fi
   post_build:
     commands:
       - echo "Build finalizado. Validando artefactos..."
