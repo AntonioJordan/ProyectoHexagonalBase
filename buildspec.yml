@@ -21,13 +21,6 @@ phases:
       - ls -l target
       - echo "Renombrando archivo JAR generado..."
       - mv target/*.jar application.jar
-      - |
-        if [ -f application.jar ]; then
-          echo "JAR encontrado"
-        else
-          echo "No se encuentra el archivo JAR"
-          exit 1
-        fi
   post_build:
     commands:
       - echo "Build finalizado. Validando artefactos..."
