@@ -8,16 +8,16 @@ phases:
       - mvn dependency:go-offline
   build:
     commands:
-      - cd /var/app/current
+      - cd $CODEBUILD_SRC_DIR
       - ls -l
       - mvn clean package -DskipTests
       - ls -l target
       - mv target/*.jar application.jar
   post_build:
     commands:
-      - ls -l /var/app/current
+      - ls -l $CODEBUILD_SRC_DIR
 artifacts:
   files:
     - application.jar
     - Procfile
-    - /var/app/current/target/**/*
+    - target/**/*
