@@ -6,7 +6,7 @@ phases:
       maven: 3.8
     commands:
       - echo "Instalando dependencias..."
-      - export LANG=en_US.UTF-8 # Configuración regional
+      - export LANG=en_US.UTF-8
       - echo "Configuración regional: $LANG"
       - mvn dependency:go-offline
   build:
@@ -21,7 +21,13 @@ phases:
       - ls -l target
       - echo "Renombrando archivo JAR generado..."
       - mv target/*.jar application.jar
-      - if [ -f application.jar ]; then echo "JAR encontrado"; else echo "No se encuentra el archivo JAR"; exit 1; fi
+      - |
+        if [ -f application.jar ]; then
+          echo "JAR encontrado"
+        else
+          echo "No se encuentra el archivo JAR"
+          exit 1
+        fi
   post_build:
     commands:
       - echo "Build finalizado. Validando artefactos..."
@@ -30,4 +36,4 @@ artifacts:
   files:
     - application.jar
     - Procfile
-    - /var/app/current/target/**/*  # Incluir todos los artefactos generados
+    - /var/app/current/target/**/*
