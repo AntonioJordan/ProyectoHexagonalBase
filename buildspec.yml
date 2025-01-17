@@ -3,7 +3,6 @@ phases:
   install:
     runtime-versions:
       java: corretto21
-      maven: 3.8
     commands:
       - export LANG=en_US.UTF-8
       - mvn dependency:go-offline
