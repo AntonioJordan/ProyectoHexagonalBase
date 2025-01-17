@@ -9,7 +9,6 @@ phases:
       - mvn dependency:go-offline
   build:
     commands:
-      - echo "Estableciendo directorio de trabajo..."
       - cd /var/app/current
       - ls -l
       - mvn clean package -DskipTests
@@ -17,7 +16,6 @@ phases:
       - mv target/*.jar application.jar
   post_build:
     commands:
-      - echo "Build finalizado. Validando artefactos..."
       - ls -l /var/app/current
 artifacts:
   files:
