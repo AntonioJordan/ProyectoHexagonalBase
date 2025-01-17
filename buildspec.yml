@@ -5,21 +5,15 @@ phases:
       java: corretto21
       maven: 3.8
     commands:
-      - echo "Instalando dependencias..."
       - export LANG=en_US.UTF-8
-      - echo "Configuración regional: $LANG"
       - mvn dependency:go-offline
   build:
     commands:
       - echo "Estableciendo directorio de trabajo..."
       - cd /var/app/current
-      - echo "Verificando contenido del directorio actual..."
       - ls -l
-      - echo "Compilando y empaquetando la aplicación..."
       - mvn clean package -DskipTests
-      - echo "Verificando contenido de la carpeta 'target'..."
       - ls -l target
-      - echo "Renombrando archivo JAR generado..."
       - mv target/*.jar application.jar
   post_build:
     commands:
