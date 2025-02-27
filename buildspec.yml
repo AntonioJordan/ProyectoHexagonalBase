@@ -20,6 +20,7 @@ phases:
       - ls -l
       - mvn clean package -DskipTests
       - ls -l target
+      - mv target/*.jar application.jar
       - echo Building Docker image...
       - docker build -t $REPOSITORY_URI:$CONTAINER_NAME-latest .
       - docker tag $REPOSITORY_URI:$CONTAINER_NAME-latest $REPOSITORY_URI:$CONTAINER_NAME-$CODEBUILD_RESOLVED_SOURCE_VERSION
