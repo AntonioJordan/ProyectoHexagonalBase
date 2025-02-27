@@ -1,4 +1,10 @@
 version: 0.2
+
+env:
+  variables:
+    REPOSITORY_URI: "650251708051.dkr.ecr.us-east-1.amazonaws.com/mi-micro-java"  # URI de tu repositorio ECR
+    CONTAINER_NAME: "mi-micro-java"  # Nombre del contenedor Docker
+
 phases:
   install:
     runtime-versions:
@@ -6,16 +12,22 @@ phases:
     commands:
       - export LANG=en_US.UTF-8
       - mvn dependency:go-offline
+      - echo Logging into Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
   build:
     commands:
       - cd $CODEBUILD_SRC_DIR
       - ls -l
       - mvn clean package -DskipTests
       - ls -l target
-      - mv target/*.jar application.jar
+      - echo Building Docker image...
+      - docker build -t $REPOSITORY_URI:$CONTAINER_NAME-latest .
+      - docker tag $REPOSITORY_URI:$CONTAINER_NAME-latest $REPOSITORY_URI:$CONTAINER_NAME-$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
-      - ls -l $CODEBUILD_SRC_DIR
+      - echo Pushing Docker image to ECR...
+      - docker push $REPOSITORY_URI:$CONTAINER_NAME-latest
+      - docker push $REPOSITORY_URI:$CONTAINER_NAME-$CODEBUILD_RESOLVED_SOURCE_VERSION
 artifacts:
   files:
     - application.jar
