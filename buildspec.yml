@@ -2,9 +2,9 @@ version: 0.2
 
 env:
   variables:
-    REPOSITORY_URI: "650251708051.dkr.ecr.us-east-1.amazonaws.com/mi-micro-java"  # URI de tu repositorio ECR
-    CONTAINER_NAME: "mi-micro-java"  # Nombre del contenedor Docker
     AWS_REGION: "us-east-1"
+    REPOSITORY_URI: "650251708051.dkr.ecr.us-east-1.amazonaws.com/mi-micro-java"
+    CONTAINER_NAME: "mi-micro-java"
 
 phases:
   install:
@@ -14,7 +14,7 @@ phases:
       - export LANG=en_US.UTF-8
       - mvn dependency:go-offline
       - echo Logging into Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
   build:
     commands:
       - cd $CODEBUILD_SRC_DIR
